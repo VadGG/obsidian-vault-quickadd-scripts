@@ -1,0 +1,22 @@
+{
+  "name": "obsidian-vault-quickadd-scripts",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:new": "esbuild src/components/new.ts --bundle --platform=node --format=iife --outfile=dist/new.js --external:obsidian",
+    "build:update_parent": "esbuild src/components/update_parent.ts --bundle --platform=node --format=iife --outfile=dist/update_parent.js --external:obsidian",
+    "build": "npm run clean && npm run build:new && npm run build:update_parent",
+    "watch:new": "esbuild src/components/new.ts --bundle --platform=node --format=iife --outfile=dist/new.js --external:obsidian --watch",
+    "watch:update_parent": "esbuild src/components/update_parent.ts --bundle --platform=node --format=iife --outfile=dist/update_parent.js --external:obsidian --watch",
+    "watch": "npm run watch:new & npm run watch:update_parent"
+  },
+  "dependencies": {
+    "obsidian": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0",
+    "esbuild": "^0.14.0",
+    "rimraf": "^3.0.2"
+  }
+}
